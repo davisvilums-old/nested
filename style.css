@@ -1,0 +1,45 @@
+body {	background-color:#00A0B1;
+				color:#fff;
+				font-family: Arial, sans-serif;
+				font-size:11px;
+				line-height: 14px;
+				padding:0px;
+				margin:0px;	
+				}
+
+      
+#container { background: #2E8DEF;}
+
+.box { 	background-color:#A700AE;
+
+ 
+-webkit-transition: all 300ms cubic-bezier(1.000, 0.000, 0.000, 1.000); 
+   -moz-transition: all 300ms cubic-bezier(1.000, 0.000, 0.000, 1.000); 
+    -ms-transition: all 300ms cubic-bezier(1.000, 0.000, 0.000, 1.000); 
+     -o-transition: all 300ms cubic-bezier(1.000, 0.000, 0.000, 1.000); 
+        transition: all 300ms cubic-bezier(1.000, 0.000, 0.000, 1.000); /* easeInOutExpo */
+        
+  -webkit-transition-property: left, right, top;
+     -moz-transition-property: left, right, top;
+      -ms-transition-property: left, right, top;
+       -o-transition-property: left, right, top;
+          transition-property: left, right, top;
+
+
+                 
+        				}
+
+.size21, .size22, .size23, .twocols { background: #643EBF }
+.size32, .size33, .size31, .threecols { background: #BF1E4B }
+/*.size23, .size31 { background: #e51400 }
+*/
+
+a.btn {
+  margin-right: 1px; 
+  line-height: 60px;
+  height: 60px;
+  cursor: pointer;
+  display: inline-block;
+  width: 150px;
+  color: red;
+}
