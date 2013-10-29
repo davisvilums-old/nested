@@ -297,6 +297,7 @@ if (!Object.keys) {
             while (true) {
 
                 //console.log(this.columns,gridy,col);
+                // Problem search
 
                 //gridy - Grows tooooooo fast
                 for (var y = col; y >= 0; y--) {
