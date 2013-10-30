@@ -12,35 +12,29 @@
 
 <a class="btn" id="prepend">Prepend</a>
 
-<div id="container">
-  <div class="box size31">1</div>
-  <div class="box size23">2</div>
-  <div class="box size32">3</div>
-  <div class="box size11">4</div>
-  <div class="box size21">5</div>
-  <div class="box size12">6</div>
-  <div class="box size21">7</div>
-  <div class="box size11">8</div>
-  <div class="box size31">9</div>
-  <div class="box size22">10</div>
-  <div class="box size11">11</div>
-  <div class="box size21">12</div>
-  <div class="box size12">13</div>
-  <div class="box size21">14</div>
-  <div class="box size23">15</div>
-  <div class="box size22">16</div>
-  <div class="box size11">17</div>
-  <div class="box size21">18</div>
-  <div class="box size12">19</div>
-  <div class="box size21">20</div>
-  <div class="box size22">21</div>
-  <div class="box size23">22</div>
-  <div class="box size11">23</div>
-  <div class="box size21">24</div>
-  <div class="box size12">25</div>
-  <div class="box size21">26</div>
-  <div class="box size22">27</div>
-  <div class="box size22">28</div>
+<div id="wrapper">
+  <div id="container">
+    <div class="box size31">1</div>
+    <div class="box size33">2</div>
+    <div class="box size32">3</div>
+    <div class="box size11">4</div>
+    <div class="box size21">5</div>
+    <div class="box size12">6</div>
+    <div class="box size21">7</div>
+    <div class="box size11">8</div>
+    <div class="box size31">9</div>
+    <div class="box size22">10</div>
+    <div class="box size31">1</div>
+    <div class="box size23">2</div>
+    <div class="box size32">3</div>
+    <div class="box size11">4</div>
+    <div class="box size21">5</div>
+    <div class="box size12">6</div>
+    <div class="box size21">7</div>
+    <div class="box size11">8</div>
+    <div class="box size31">9</div>
+    <div class="box size22">10</div>
+  </div>
 </div>
 
 <a class="btn" id="append">Append</a>
@@ -48,23 +42,28 @@
 <script type="text/javascript" >
   
   $(function() { 
-    Nested_Width = 150;
-    Nested_Gutter = 10;
+    var Nested_Width = 100;
+    var Nested_Gutter = 10;
 
-    Resize(Nested_Width,Nested_Gutter,$('#container'));
+    resizator(Nested_Width,Nested_Gutter);
     $(window).resize(function(){
-      Resize(Nested_Width,Nested_Gutter,$('#container'));
+      resizator(Nested_Width,Nested_Gutter);
     });
     
     $('#container').nested({
       minWidth: Nested_Width,
-      resizeToFit: true,
-      minColumns: 3,
+      minWidthOrigin: Nested_Width,
       gutter: Nested_Gutter,
-      resizeToFitOptions: { 
-        resizeAny: false
+      animate: false,
+      resizeToFit: false,
+      resizeToFitOptions: { resizeAny: false },
+      animationOptions: {
+        complete: function () {
+          isNested = true;
+          //resize_modulor();
+        }
       }
-    }); 
+    });
     
     $('#prepend').click(function(){
       var boxes = makeBoxes();
@@ -76,24 +75,10 @@
     })
 
   });
-  var Resize = function(Nested_Width,Nested_Gutter,containerd){
-    Max = Math.floor(containerd.parent().width()/(Nested_Width+Nested_Gutter));
-    Newsize = (Nested_Width+Nested_Gutter) * Max - Nested_Gutter;
-    if(Newsize<(Nested_Width+Nested_Gutter)*5){
-      // $('.size31').addClass('size21').addClass('oldsize31').removeClass('size31');
-      // $('.size32').addClass('size21').addClass('oldsize32').removeClass('size32');
-      // $('.size33').addClass('size21').addClass('oldsize33').removeClass('size33');
-      // $('.size31').remove();
-      // $('.size32').remove();
-      // $('.size33').remove();
-      //Newsize = (Nested_Width+Nested_Gutter)*3;
-    } else {
-      $('.oldsize31').removeClass('size21').addClass('size31').removeClass('oldsize31');
-      $('.oldsize32').removeClass('size22').addClass('size32').removeClass('oldsize32');
-      $('.oldsize33').removeClass('size23').addClass('size33').removeClass('oldsize33');      
-    }
-    //containerd.width(Newsize);
-   // containerd.css('margin','0 auto');
+  var resizator = function(w,g){
+    containerw = Math.floor(($(window).width()-g)/(w+g))*(w+g);
+    $('#container').width(containerw);
+
   }
   
   

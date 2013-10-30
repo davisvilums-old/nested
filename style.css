@@ -8,9 +8,8 @@ body {	background-color:#00A0B1;
 				}
 
       
-#container { background: #2E8DEF; position: relative; margin: 0 auto; }
+#container { position: relative; margin: 0 auto; }
 #wrapper { 
-   
   position: relative;
   padding-left: 10px; /*Nested_Gutter*/
 }

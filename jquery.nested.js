@@ -89,6 +89,13 @@ if (!Object.keys) {
             var gutter = this.options.gutter;
             var display = "block";
             var currWidthAll = minWidth * (this.columns - 1) + gutter * (this.columns - 2);
+            var realCols = (this.columns - 1);
+            // var newWidth = ((minWidth + gutter) * 3);
+
+            // if (newWidth>currWidthAll) {
+            //     this.options.minWidth = currWidthAll/3 - (gutter * 3);
+            //     minWidth = this.options.minWidth;
+            // }
 
             $els = this.box.find(this.options.selector);
 
@@ -99,8 +106,19 @@ if (!Object.keys) {
                 var y = (dim[1] == "a") ? 1 : parseFloat(dim[1]);
 
                 var currWidth = minWidth * x + gutter * (x - 1);
-                if (currWidth>currWidthAll) currWidth = currWidthAll;
                 var currHeight = minWidth * y + gutter * (y - 1);
+                if (currWidth>currWidthAll) {
+                    //console.log (realCols / x);
+                    //console.log (Math.round(realCols / x),Math.round(y / x),y/x);
+                    rat = (realCols / x);
+                    x = Math.round(realCols / x);
+                    y = Math.round(y * rat);
+                    console.log (y);
+
+                    currWidth = currWidthAll;
+                    currHeight = minWidth * y + gutter * (y - 1);
+                    
+                }
 
                 $(this).css({
                     'display': display,
