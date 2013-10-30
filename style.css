@@ -8,7 +8,8 @@ body {	background-color:#00A0B1;
 				}
 
       
-#container { background: #2E8DEF;}
+#container { background: #2E8DEF; position: relative; }
+#container { margin: 0 auto;}
 
 .box { 	background-color:#A700AE;
 
