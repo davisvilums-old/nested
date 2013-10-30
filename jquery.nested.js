@@ -10,31 +10,6 @@
 
 // Debouncing function from John Hann
 // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
-// Copy pasted from http://paulirish.com/2009/throttled-smartresize-jquery-event-handler/
-
-(function ($, sr) {
-    var debounce = function (func, threshold, execAsap) {
-        var timeout;
-        return function debounced() {
-            var obj = this,
-                args = arguments;
-
-            function delayed() {
-                if (!execAsap) func.apply(obj, args);
-                timeout = null;
-            };
-            if (timeout) clearTimeout(timeout);
-            else if (execAsap) func.apply(obj, args);
-
-            timeout = setTimeout(delayed, threshold || 150);
-        };
-    }
-    jQuery.fn[sr] = function (fn) {
-        return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr);
-    };
-
-})(jQuery, 'smartresize');
-
 // Simple count object properties
 
 if (!Object.keys) {
@@ -88,8 +63,7 @@ if (!Object.keys) {
             this._update = true;
             this.maxy = new Array();
 
-            // add smartresize
-            $(window).smartresize(function () {
+            $(window).resize(function(){
                 container.resize();
             });
 
