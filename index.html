@@ -14,13 +14,15 @@
 
 <div id="wrapper">
   <div id="container">
-    <div class="box size31">1</div>
+    <div class="box size11 deskbox">Firstdiv Desk</div>
+    <div class="size33 mobbox">Firstdiv Mob</div>
     <div class="box size33">2</div>
     <div class="box size32">3</div>
     <div class="box size11">4</div>
     <div class="box size21">5</div>
     <div class="box size12">6</div>
     <div class="box size21">7</div>
+    <div class="box size11">8</div>
     <div class="box size11">8</div>
     <div class="box size31">9</div>
     <div class="box size22">10</div>
@@ -34,6 +36,9 @@
     <div class="box size11">8</div>
     <div class="box size31">9</div>
     <div class="box size22">10</div>
+    <div class="box size11">8</div>
+    <div class="box size11">8</div>
+    <div class="box size11">8</div>
   </div>
 </div>
 
@@ -43,7 +48,7 @@
   
   $(function() { 
     var Nested_Width = 100;
-    var Nested_Gutter = 10;
+    var Nested_Gutter = 5;
 
     resizator(Nested_Width,Nested_Gutter);
     $(window).resize(function(){
@@ -78,6 +83,15 @@
   var resizator = function(w,g){
     containerw = Math.floor(($(window).width()-g)/(w+g))*(w+g);
     $('#container').width(containerw);
+    if(containerw<500){
+      $('.deskbox').removeClass('box');
+      $('.deskbox').hide();
+      $('.mobbox').addClass('box');
+    } else {
+      $('.mobbox').removeClass('box');
+      $('.mobbox').hide();
+      $('.deskbox').addClass('box');
+    }
 
   }
   
